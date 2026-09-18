@@ -1,0 +1,16 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Среда
+.DS_Store
+.vscode/
+.idea/
+*.log
+
+# Временные файлы
+*.tmp
+*~
+
