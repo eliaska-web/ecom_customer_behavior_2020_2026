@@ -1,0 +1,5 @@
+,rows,cols,missing,missing_%,dupes
+customers,8000,20,0,0.0,0
+orders,25000,28,15749,2.25,0
+product_summary,140,9,0,0.0,0
+monthly_revenue,75,10,0,0.0,0
