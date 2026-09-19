@@ -4,3 +4,4 @@ reports/.DS_Store
 .venv/
 __pycache__/
 *.pyc
+.ipynb_checkpoints/
