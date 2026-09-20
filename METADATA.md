@@ -58,3 +58,32 @@
 - 337 клиентов не имеют заказов в окне анализа (RFM рассчитан для 7 663 клиентов).
 - Lifetime-метрики customers не используются как метрики окна 2020–2026.
 - Источник истины для расчётов за окно — orders_clean.csv.
+
+## 📊 BI-витрины и дашборд (добавлено 2026-09-19)
+
+### Витрины (data/marts/)
+
+| Файл | Строк | Grain | Назначение |
+|---|---|---|---|
+| `mart_customers.csv` | 8 000 | клиент | RFM-сегменты, отток, география, демография |
+| `mart_orders.csv` | 25 000 | заказ | Основная таблица фактов; денормализована (содержит клиентские атрибуты) |
+| `mart_products.csv` | 140 | товар | ABC/XYZ-анализ, рейтинг, возвраты |
+| `mart_monthly.csv` | 75 | месяц | Динамика выручки, AOV, новые/возвращающиеся клиенты |
+
+### BI-дашборд
+
+- **Ссылка:** https://datalens.yandex/gia0wfc25ex2z
+- **Паспорт:** [`dashboards/dashboard_passport.md`](dashboards/dashboard_passport.md)
+- **Контекст передачи:** [`dashboards/BI_HANDOVER_CONTEXT.md`](dashboards/BI_HANDOVER_CONTEXT.md)
+- **Спецификации:** [`dashboards/chart_specs.md`](dashboards/chart_specs.md)
+
+### Ключевые изменения ETL
+- `05_bi_marts.ipynb`: денормализация `mart_orders` (merge с `mart_customers` по `customer_id`) — для избежания JOIN в DataLens.
+- Добавлено поле `order_month_start` (тип Date) для временных осей и селекторов.
+
+### Контрольные числа для QA
+- Заказы: 25 000
+- Выручка Delivered: 2 585 126,50
+- Клиенты с заказами: 7 663
+- Churn Rate: ≈ 8,94%
+- Доля группы A: 79,7%
