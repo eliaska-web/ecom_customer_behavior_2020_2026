@@ -87,3 +87,11 @@
 - Клиенты с заказами: 7 663
 - Churn Rate: ≈ 8,94%
 - Доля группы A: 79,7%
+
+🤖 ML-артефакты 
+| Артефакт | Описание |
+| --- | --- |
+| `reports/churn_model_rf.pkl` | Обученный пайплайн: imputer+StandardScaler / imputer+OHE + RandomForestClassifier (`class_weight='balanced'`) |
+| Разбиение | 80/20 со стратификацией (random_state=42): X_train 6 400, X_test 1 600 |
+| Метрики (test) | ROC-AUC 0.7367; PR-AUC 0.2612; F1 0.1421; baseline Dummy: Accuracy 0.9106, F1 0.0000 |
+| Порог по F1 | 0.28 (Recall 55.9%, Precision 30.7%); для кампаний — Top-10% Risk Scoring |

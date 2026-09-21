@@ -46,45 +46,24 @@
 - ABC: группа A (62 товара) — 79,7% выручки.
 - XYZ: 100% товаров в группе Z (медианный CV = 0,93 при пороге 0,25) — следствие волатильности спроса на уровне SKU; матрица вырождена, решения опираются на ABC.
 
----
-
-## 📊 BI-дашборд
-
-**Публичная ссылка:** https://datalens.yandex/gia0wfc25ex2z
-
-Дашборд в Yandex DataLens: 4 вкладки, 5 KPI-индикаторов и 19 чартов по спецификации `dashboards/chart_specs.md`.
-
-- **Executive** — KPI, динамика выручки (Delivered), категории, RFM-сегменты, структура статусов, топ-10 товаров.
-- **Customers** — сегменты, давность At Risk, отток по тарифам, топ-10 стран, возраст.
-- **Products** — ABC-группы, топ-20 товаров, рейтинг × выручка, return rate, распределение CV.
-- **Trends** — статусы по месяцам (100 %), динамика AOV, новые vs возвращающиеся, сезонность год × месяц.
-
-Артефакты BI:
-- [Паспорт дашборда](dashboards/dashboard_passport.md) — назначение, KPI, селекторы, ограничения, контроль качества.
-- [Спецификации чартов](dashboards/chart_specs.md) + страницы [Executive](dashboards/specs_page1_executive.md), [Customers](dashboards/specs_page2_customers.md), [Products](dashboards/specs_page3_products.md), [Trends](dashboards/specs_page4_trends.md).
-- [Контекст передачи проекта](dashboards/BI_HANDOVER_CONTEXT.md) — формулы, контрольные числа, журнал решений для продолжения работы.
 
 ### 3. Машинное обучение (churn prediction)
-- RandomForestClassifier с `class_weight='balanced'`: ROC-AUC = 0.737, PR-AUC = 0.261.
-- Бизнес-применение — Top-10% Risk Scoring: маркетинг отрабатывает дециль с максимальной вероятностью оттока, где концентрация оттока кратно выше базовой.
+3. Машинное обучение (churn prediction)
+RandomForestClassifier с `class_weight='balanced'`: ROC-AUC = 0.737, PR-AUC = 0.261; baseline DummyClassifier: Accuracy 0.911, F1 0.000 (Accuracy неинформативна при дисбалансе). Тюнинг порога по F1: 0.28 (Recall 55.9%, Precision 30.7%). Бизнес-применение — Top-10% Risk Scoring: концентрация оттока в целевом дециле 34.4% против 8.9% по базе. Топ-3 признака: recency, days_since_last_purchase, total_orders.
 
 ---
 
 ## 📊 BI-дашборд
-
-**Публичная ссылка:** https://datalens.yandex/gia0wfc25ex2z
-
+Публичная ссылка: https://datalens.yandex/gia0wfc25ex2z
 Дашборд в Yandex DataLens: 4 вкладки, 5 KPI-индикаторов и 19 чартов по спецификации `dashboards/chart_specs.md`.
-
-- **Executive** — KPI, динамика выручки (Delivered), категории, RFM-сегменты, структура статусов, топ-10 товаров.
-- **Customers** — сегменты, давность At Risk, отток по тарифам, топ-10 стран, возраст.
-- **Products** — ABC-группы, топ-20 товаров, рейтинг × выручка, return rate, распределение CV.
-- **Trends** — статусы по месяцам (100 %), динамика AOV, новые vs возвращающиеся, сезонность год × месяц.
-
+Executive — KPI, динамика выручки (Delivered), категории, RFM-сегменты, структура статусов, топ-10 товаров.
+Customers — сегменты, давность At Risk, отток по тарифам, топ-10 стран, возраст.
+Products — ABC-группы, топ-20 товаров, рейтинг × выручка, return rate, распределение CV.
+Trends — статусы по месяцам (100 %), динамика AOV, новые vs возвращающиеся, сезонность год × месяц.
 Артефакты BI:
-- [Паспорт дашборда](dashboards/dashboard_passport.md) — назначение, KPI, селекторы, ограничения, контроль качества.
-- [Спецификации чартов](dashboards/chart_specs.md) + страницы [Executive](dashboards/specs_page1_executive.md), [Customers](dashboards/specs_page2_customers.md), [Products](dashboards/specs_page3_products.md), [Trends](dashboards/specs_page4_trends.md).
-- [Контекст передачи проекта](dashboards/BI_HANDOVER_CONTEXT.md) — формулы, контрольные числа, журнал решений для продолжения работы.
+[Паспорт дашборда](dashboards/dashboard_passport.md) — назначение, KPI, селекторы, ограничения, контроль качества.
+[Спецификации чартов](dashboards/chart_specs.md) + страницы [Executive](dashboards/specs_page1_executive.md), [Customers](dashboards/specs_page2_customers.md), [Products](dashboards/specs_page3_products.md), [Trends](dashboards/specs_page4_trends.md).
+[Контекст передачи проекта](dashboards/BI_HANDOVER_CONTEXT.md) — формулы, контрольные числа, журнал решений для продолжения работы.
 
 
 ## 📂 Структура проекта
